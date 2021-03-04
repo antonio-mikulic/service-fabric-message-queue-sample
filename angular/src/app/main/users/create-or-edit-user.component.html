@@ -1,0 +1,52 @@
+<div *ngIf="isLoading">
+  <mat-progress-spinner class="example-margin" *ngIf="isLoading" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+</div>
+
+<div *ngIf="!isLoading">
+  <h1 mat-dialog-title>
+    <span *ngIf="!editMode">Create User</span>
+    <span *ngIf="editMode">Edit User {{user.userName}}</span>
+  </h1>
+  <div mat-dialog-content>
+    <mat-tab-group>
+
+      <mat-tab label="Main">
+        <div class="dialog-box">
+          <mat-form-field>
+            <input matInput placeholder="UserName" [(ngModel)]="user.userName">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="user.name">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Email" [(ngModel)]="user.email">
+          </mat-form-field>
+
+          <div *ngIf="!editMode">
+            <mat-form-field>
+              <input matInput placeholder="Password" type="password" [(ngModel)]="user.password">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Confirm Password" type="password" [(ngModel)]="confirmPassword">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Roles">
+        <div class="dialog-box">
+          <div *ngFor="let role of roles; let i = index">
+            <mat-checkbox class="example-margin" (change)="onRoleChange($event)" [value]="role">{{role}}
+            </mat-checkbox>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+    <button mat-stroked-button color="primary" (click)="save()" cdkFocusInitial>Save</button>
+  </div>
+</div>

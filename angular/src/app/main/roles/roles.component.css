@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+
+.example-margin {
+  margin: 0 auto;
+}
+
+.dialog-box {
+  padding: 1em;
+  height: 30vh;
+}

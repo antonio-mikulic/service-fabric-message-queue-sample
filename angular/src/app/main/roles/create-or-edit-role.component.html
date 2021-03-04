@@ -1,0 +1,22 @@
+<div *ngIf="isLoading">
+  <mat-progress-spinner class="example-margin" *ngIf="isLoading" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+</div>
+
+<div *ngIf="!isLoading">
+  <h1 mat-dialog-title>
+    <span *ngIf="!editMode">Create Role</span>
+    <span *ngIf="editMode">Edit Role {{role.name}}</span>
+  </h1>
+  <div mat-dialog-content>
+
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="role.name">
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+    <button mat-stroked-button color="primary" (click)="save()" cdkFocusInitial>Save</button>
+  </div>
+</div>
